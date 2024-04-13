@@ -7,12 +7,13 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
+
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { URL_BACKGROUND, USER_AVATAR } from "../utils/constants";
 
 const Login = () => {
-  const navigate=useNavigate()
+ 
   const dispatch=useDispatch()
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -44,7 +45,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: "https://avatars.githubusercontent.com/u/12811851?v=4",
+            photoURL:  USER_AVATAR ,
           })
             .then(() => {
               // Profile updated!
@@ -57,11 +58,10 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-               navigate("/browse");
             })
             .catch((error) => {
               // An error occurred
-              setErrorMessage(error.message)
+              setErrorMessage(error.message);
             });
          
           
@@ -82,8 +82,8 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user, "DDDDD");
-           navigate("/browse");
+         
+         
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -92,7 +92,7 @@ const Login = () => {
         });
     }
   };
-
+  
   const toggleSingInForm = () => {
     setIsSignInForm(!isSignInForm);
   };
@@ -101,10 +101,7 @@ const Login = () => {
     <div>
       <Header />
       <div className="absolute">
-        <img
-          alt="logo"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/fc164b4b-f085-44ee-bb7f-ec7df8539eff/d23a1608-7d90-4da1-93d6-bae2fe60a69b/IN-en-20230814-popsignuptwoweeks-perspective_alpha_website_large.jpg"
-        />
+        <img alt="logo" src={URL_BACKGROUND} />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
@@ -115,24 +112,24 @@ const Login = () => {
         </h1>
         {!isSignInForm && (
           <input
-          ref={name}
+            ref={name}
             type="name"
             placeholder="Full Name"
-            className="p-4 my-2 w-full bg-gray-700"
+            className="p-4 my-2 w-full bg-gray-700 rounded-lg"
           />
         )}
-        <input  
+        <input
           ref={email}
           type="text"
           placeholder="Email Address"
-          className="p-4 my-4 w-full bg-gray-700"
+          className="p-4 my-4 w-full bg-gray-700 rounded-lg"
         />
 
         <input
           ref={password}
           type="password"
           placeholder="Password"
-          className="p-4 my-2 w-full bg-gray-700"
+          className="p-4 my-2 w-full bg-gray-700 rounded-lg"
         />
         <p className="text-red-700 font-bold text-lg py-2">{errorMessage}</p>
         <button
