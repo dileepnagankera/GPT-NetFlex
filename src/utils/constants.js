@@ -15,4 +15,9 @@ export const API_OPTIONS = {
       " Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxYjFlYmQ2ZmQxNDM2MWViOGViZmNhMTA3MDJkYTA4OCIsInN1YiI6IjY2MTdhY2E1N2Q0MWFhMDE3ZDAwN2VmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.91yvAsdtdqQWmeFlCsdgjfCSZg2E82XjRqSGQcSqHUc",
   },
 };
+
+export const IMG_CDN_URL =
+  "https://image.tmdb.org/t/p/w500";
+
+
 //--url 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1' \
