@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
 import { LOGO } from "../utils/constants";
+import { toggleGptSearchView } from "../utils/gptSlice";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -48,11 +49,17 @@ const Header = () => {
     return () => unsubscribe();
   }, []);
 
+  const handleGptSearchClick =()=>{
+    // Toggle GPT Search
+    dispatch(toggleGptSearchView())
+  }
+
   return (
     <div className="absolute w-screen px-8 bg-gradient-to-b from-black z-10 flex justify-between">
       <img className="w-44" alt="logo" src={LOGO} />
       {user && (
         <div className="flex p-2">
+          <button className="py-2 px-2 m-2 text-white bg-purple-800 rounded-lg mx-4 my-2" onClick={handleGptSearchClick}>GPT Search</button>
           <img className="w-14 h-14" alt="userIcon" src={user?.photoURL} />
           <button onClick={handleSignOut} className="font-bold text-white">
             (Sign Out)
