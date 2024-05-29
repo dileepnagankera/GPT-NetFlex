@@ -21,9 +21,9 @@ export const IMG_CDN_URL =
 
 
   export const SUPPORTED_LANGUAGES = [
-    { identifier: "en", name: "english" },
-    { identifier: "hindi", name: "hindi" },
-    { identifier: "spanish", name: "spanish" },
+    { identifier: "en", name: "English" },
+    { identifier: "hindi", name: "Hindi" },
+    { identifier: "spanish", name: "Spanish" },
   ];
 
 
